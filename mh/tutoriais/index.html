@@ -171,7 +171,7 @@
             font-size: 1.4rem;
             font-weight: 600;
             color: var(--cor-secundaria);
-            padding: 20px;
+            padding: 20px 50px 20px 20px; /* Adicionado mais padding à direita */
             cursor: pointer;
             list-style: none; /* Remove a seta padrão */
             position: relative;
@@ -292,10 +292,14 @@
                 margin-top: -30px;
                 margin-bottom: 30px;
             }
+
+            /* --- CORREÇÃO APLICADA --- */
             .accordion-item summary {
                 font-size: 1.2rem;
-                padding: 15px;
+                /* Ordem: topo, direita, baixo, esquerda */
+                padding: 15px 45px 15px 15px; 
             }
+
             .accordion-item summary::after {
                 right: 20px;
             }
