@@ -202,29 +202,25 @@
         /* Telas de celular */
         @media (max-width: 768px) {
             
-            /* --- NOVOS AJUSTES NO BANNER (HERO) PARA CELULAR --- */
             .hero {
-                height: 60vh; /* O banner terá 60% da altura da tela */
-                max-height: none; /* Remove a altura máxima para priorizar a da tela */
+                height: 60vh;
+                max-height: none;
             }
 
             .hero-content {
-                padding-top: 0; /* Remove padding extra para centralizar melhor */
+                padding-top: 0;
             }
             
             .hero-content h1 {
-                /* A fonte se ajusta à largura da tela, com limites mínimo e máximo */
                 font-size: clamp(1.8rem, 8vw, 2.5rem); 
-                margin-bottom: 15px; /* Espaçamento menor */
+                margin-bottom: 15px;
             }
             
             .hero-logo {
-                /* O logo se ajusta à largura da tela, com limite máximo */
                 width: 40vw; 
                 max-width: 160px;
-                margin-top: 15px; /* Espaçamento menor */
+                margin-top: 15px;
             }
-            /* --- FIM DOS NOVOS AJUSTES --- */
 
             .acessos-grid {
                 grid-template-columns: 1fr;
@@ -235,64 +231,19 @@
                 min-height: 100px;
             }
 
+            /* --- ALTERAÇÕES PARA REMOVER O MENU NO CELULAR --- */
             .nav-container {
-                justify-content: space-between;
+                justify-content: center; /* Centraliza o logo, que é o único item restante */
             }
 
             .menu-hamburguer {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
+                display: none; /* Esconde o ícone do menu hambúrguer */
             }
-            .menu-hamburguer .linha {
-                width: 28px;
-                height: 3px;
-                background-color: var(--cor-secundaria);
-                border-radius: 2px;
-            }
-
+            
             header nav {
-                display: none;
+                display: none; /* Esconde a barra de navegação */
             }
-            
-            .fechar-menu {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                font-size: 2.5rem;
-                color: var(--cor-primaria);
-            }
-            
-            nav {
-                display: block;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(0, 102, 161, 0.98);
-                backdrop-filter: blur(5px);
-                transition: right 0.4s ease-in-out;
-                z-index: 1001;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100%;
-                gap: 30px;
-            }
-
-            .nav-links a {
-                color: var(--cor-primaria);
-                font-size: 1.5rem;
-            }
-
-            nav.ativo {
-                right: 0;
-            }
+            /* --- FIM DAS ALTERAÇÕES --- */
         }
     </style>
 </head>
@@ -304,7 +255,6 @@
                 <img src="galeria/seed.png" alt="Logo Secretaria da Educação" class="header-seed-logo">
             </a>
             <nav>
-                <div class="fechar-menu">×</div>
                 <ul class="nav-links">
                     <li><a href="sobre/">Sobre</a></li>
                     <li><a href="cursos/">Cursos</a></li>
@@ -312,11 +262,7 @@
                     <li><a href="contato/">Contato</a></li>
                 </ul>
             </nav>
-            <div class="menu-hamburguer">
-                <div class="linha"></div>
-                <div class="linha"></div>
-                <div class="linha"></div>
-            </div>
+            <div class="menu-hamburguer"></div>
         </div>
     </header>
 
