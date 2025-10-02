@@ -43,7 +43,7 @@
             color: var(--cor-secundaria);
         }
 
-        /* --- CABEÇALHO (VERSÃO ORIGINAL DESKTOP RESTAURADA) --- */
+        /* --- CABEÇALHO (VERSÃO DESKTOP) --- */
         header {
             background-color: var(--cor-primaria);
             padding: 10px 0;
@@ -57,14 +57,14 @@
             display: flex;
             align-items: center;
             height: 50px;
-            position: relative; /* Essencial para o posicionamento do menu */
+            position: relative;
         }
 
         header nav {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%); /* Centraliza o menu perfeitamente */
+            transform: translate(-50%, -50%);
         }
 
         .header-seed-logo {
@@ -89,19 +89,17 @@
             color: var(--cor-terciaria);
         }
         
-        /* Esconde elementos mobile na versão desktop */
         .menu-hamburguer, .fechar-menu {
             display: none;
             cursor: pointer;
         }
 
 
-        /* --- SEÇÃO HERO --- */
+        /* --- SEÇÃO HERO (VERSÃO DESKTOP) --- */
         .hero {
             background: linear-gradient(rgba(0, 102, 161, 0.65), rgba(0, 102, 161, 0.65)), url('galeria/imagem-mh.jpg') no-repeat center center/cover;
             height: 50vw;
             max-height: 70vh;
-            min-height: 300px; 
             color: var(--cor-primaria);
             display: flex;
             justify-content: center;
@@ -203,13 +201,31 @@
 
         /* Telas de celular */
         @media (max-width: 768px) {
-            /* AJUSTES GERAIS PARA CELULAR */
+            
+            /* --- NOVOS AJUSTES NO BANNER (HERO) PARA CELULAR --- */
+            .hero {
+                height: 60vh; /* O banner terá 60% da altura da tela */
+                max-height: none; /* Remove a altura máxima para priorizar a da tela */
+            }
+
+            .hero-content {
+                padding-top: 0; /* Remove padding extra para centralizar melhor */
+            }
+            
             .hero-content h1 {
-                font-size: 2rem;
+                /* A fonte se ajusta à largura da tela, com limites mínimo e máximo */
+                font-size: clamp(1.8rem, 8vw, 2.5rem); 
+                margin-bottom: 15px; /* Espaçamento menor */
             }
+            
             .hero-logo {
-                max-width: 150px;
+                /* O logo se ajusta à largura da tela, com limite máximo */
+                width: 40vw; 
+                max-width: 160px;
+                margin-top: 15px; /* Espaçamento menor */
             }
+            /* --- FIM DOS NOVOS AJUSTES --- */
+
             .acessos-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -219,14 +235,10 @@
                 min-height: 100px;
             }
 
-            /* --- MUDANÇAS NO CABEÇALHO APENAS PARA CELULAR --- */
-            
-            /* Alinha o logo à esquerda e o hambúrguer à direita */
             .nav-container {
                 justify-content: space-between;
             }
 
-            /* Mostra o menu hambúrguer */
             .menu-hamburguer {
                 display: flex;
                 flex-direction: column;
@@ -239,12 +251,10 @@
                 border-radius: 2px;
             }
 
-            /* Esconde o menu de navegação original */
             header nav {
                 display: none;
             }
             
-            /* Mostra o botão de fechar dentro do menu mobile */
             .fechar-menu {
                 display: block;
                 position: absolute;
@@ -254,12 +264,11 @@
                 color: var(--cor-primaria);
             }
             
-            /* Transforma a navegação em um menu lateral */
             nav {
-                display: block; /* Sobrescreve o display: none */
+                display: block;
                 position: fixed;
                 top: 0;
-                right: -100%; /* Começa escondido */
+                right: -100%;
                 width: 100%;
                 height: 100vh;
                 background-color: rgba(0, 102, 161, 0.98);
@@ -281,7 +290,6 @@
                 font-size: 1.5rem;
             }
 
-            /* Classe 'ativo' que será adicionada via JS para mostrar o menu */
             nav.ativo {
                 right: 0;
             }
@@ -353,14 +361,12 @@
             const navMenu = document.querySelector('nav');
             const fecharMenu = document.querySelector('.fechar-menu');
 
-            // Abre o menu
             if (menuHamburguer) {
                 menuHamburguer.addEventListener('click', () => {
                     navMenu.classList.add('ativo');
                 });
             }
 
-            // Fecha o menu
             if (fecharMenu) {
                 fecharMenu.addEventListener('click', () => {
                     navMenu.classList.remove('ativo');
