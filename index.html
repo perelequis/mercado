@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="galeria/logo.png" type="image/png">
     
     <style>
         :root {
@@ -43,6 +43,7 @@
             color: var(--cor-secundaria);
         }
 
+        /* --- CABEÇALHO (VERSÃO ORIGINAL DESKTOP RESTAURADA) --- */
         header {
             background-color: var(--cor-primaria);
             padding: 10px 0;
@@ -56,25 +57,24 @@
             display: flex;
             align-items: center;
             height: 50px;
-            position: relative;
+            position: relative; /* Essencial para o posicionamento do menu */
         }
 
         header nav {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Centraliza o menu perfeitamente */
         }
 
         .header-seed-logo {
             height: 40px;
             width: auto;
         }
-        
+
         .nav-links {
             list-style: none;
             display: flex;
-            justify-content: center;
             gap: 40px;
         }
 
@@ -88,11 +88,20 @@
         .nav-links a:hover {
             color: var(--cor-terciaria);
         }
+        
+        /* Esconde elementos mobile na versão desktop */
+        .menu-hamburguer, .fechar-menu {
+            display: none;
+            cursor: pointer;
+        }
 
+
+        /* --- SEÇÃO HERO --- */
         .hero {
-            background: linear-gradient(rgba(0, 102, 161, 0.65), rgba(0, 102, 161, 0.65)), url('imagem-mh.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 102, 161, 0.65), rgba(0, 102, 161, 0.65)), url('galeria/imagem-mh.jpg') no-repeat center center/cover;
             height: 50vw;
             max-height: 70vh;
+            min-height: 300px; 
             color: var(--cor-primaria);
             display: flex;
             justify-content: center;
@@ -121,14 +130,16 @@
             margin-top: 30px;
             margin-bottom: 20px;
         }
-        
+
+
+        /* --- SEÇÃO ACESSOS --- */
         .acessos-section {
             padding: 60px 0;
         }
 
         .acessos-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
@@ -136,9 +147,9 @@
             background-color: var(--cor-primaria);
             color: var(--cor-secundaria);
             text-decoration: none;
-            padding: 40px 20px;
+            padding: 25px 20px;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -146,7 +157,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 150px;
+            min-height: 120px;
         }
 
         .acesso-button:hover {
@@ -155,10 +166,12 @@
             color: var(--cor-terciaria);
         }
 
+
+        /* --- RODAPÉ --- */
         footer {
             background-color: var(--cor-rodape);
             color: #f0f0f0;
-            padding: 30px 0;
+            padding: 30px 20px;
             text-align: center;
         }
 
@@ -180,24 +193,97 @@
             text-decoration: underline;
         }
 
+        /* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+
         @media (max-width: 1024px) {
             .acessos-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
+        /* Telas de celular */
         @media (max-width: 768px) {
+            /* AJUSTES GERAIS PARA CELULAR */
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+            .hero-logo {
+                max-width: 150px;
             }
             .acessos-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .nav-links {
-                display: none; 
+            .acesso-button {
+                font-size: 1.1rem;
+                min-height: 100px;
             }
+
+            /* --- MUDANÇAS NO CABEÇALHO APENAS PARA CELULAR --- */
+            
+            /* Alinha o logo à esquerda e o hambúrguer à direita */
             .nav-container {
+                justify-content: space-between;
+            }
+
+            /* Mostra o menu hambúrguer */
+            .menu-hamburguer {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .menu-hamburguer .linha {
+                width: 28px;
+                height: 3px;
+                background-color: var(--cor-secundaria);
+                border-radius: 2px;
+            }
+
+            /* Esconde o menu de navegação original */
+            header nav {
+                display: none;
+            }
+            
+            /* Mostra o botão de fechar dentro do menu mobile */
+            .fechar-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2.5rem;
+                color: var(--cor-primaria);
+            }
+            
+            /* Transforma a navegação em um menu lateral */
+            nav {
+                display: block; /* Sobrescreve o display: none */
+                position: fixed;
+                top: 0;
+                right: -100%; /* Começa escondido */
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(0, 102, 161, 0.98);
+                backdrop-filter: blur(5px);
+                transition: right 0.4s ease-in-out;
+                z-index: 1001;
+            }
+            
+            .nav-links {
+                flex-direction: column;
                 justify-content: center;
+                align-items: center;
+                height: 100%;
+                gap: 30px;
+            }
+
+            .nav-links a {
+                color: var(--cor-primaria);
+                font-size: 1.5rem;
+            }
+
+            /* Classe 'ativo' que será adicionada via JS para mostrar o menu */
+            nav.ativo {
+                right: 0;
             }
         }
     </style>
@@ -206,17 +292,23 @@
     
     <header>
         <div class="container nav-container">
-            <a href="/">
-                <img src="seed.png" alt="Logo Secretaria da Educação" class="header-seed-logo">
+            <a href="index.html">
+                <img src="galeria/seed.png" alt="Logo Secretaria da Educação" class="header-seed-logo">
             </a>
             <nav>
+                <div class="fechar-menu">×</div>
                 <ul class="nav-links">
-                    <li><a href="./sobre/">Sobre</a></li>
-                    <li><a href="./cursos/">Cursos</a></li>
-                    <li><a href="./extracurriculares/">Atividades</a></li>
-                    <li><a href="./contato/">Contato</a></li>
+                    <li><a href="sobre/">Sobre</a></li>
+                    <li><a href="cursos/">Cursos</a></li>
+                    <li><a href="extracurriculares/">Atividades</a></li>
+                    <li><a href="contato/">Contato</a></li>
                 </ul>
             </nav>
+            <div class="menu-hamburguer">
+                <div class="linha"></div>
+                <div class="linha"></div>
+                <div class="linha"></div>
+            </div>
         </div>
     </header>
 
@@ -224,21 +316,20 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Bem-vindo ao Colégio Maria Helena!</h1>
-                <img src="logo.png" alt="Logo do Colégio Maria Helena" class="hero-logo">
+                <img src="galeria/logo.png" alt="Logo do Colégio Maria Helena" class="hero-logo">
             </div>
         </section>
 
         <section class="acessos-section">
             <div class="container">
                 <div class="acessos-grid">
-                    <a href="https://www.educacao.pr.gov.br/iniciar/" class="acesso-button">Aplicativos e Plataformas</a>
-                    <a href="./cursos/" class="acesso-button">Nossos Cursos</a>
-                    <a href="./sobre/" class="acesso-button">Sobre o Colégio</a>
-                    <a href="./extracurriculares/" class="acesso-button">Atividades Extracurriculares</a>
-                    <a href="./links/" class="acesso-button">Links Úteis</a>
-                    <a href="./tutoriais/" class="acesso-button">Tutoriais</a>
-                    <a href="./contato/" class="acesso-button">Fale Conosco</a>
-                    
+                    <a href="https://www.educacao.pr.gov.br/iniciar/" class="acesso-button" target="_blank" rel="noopener noreferrer">Aplicativos e Plataformas</a>
+                    <a href="cursos/" class="acesso-button">Nossos Cursos</a>
+                    <a href="sobre/" class="acesso-button">Sobre o Colégio</a>
+                    <a href="extracurriculares/" class="acesso-button">Atividades Extracurriculares</a>
+                    <a href="links/" class="acesso-button">Links Úteis</a>
+                    <a href="tutoriais/" class="acesso-button">Tutoriais</a>
+                    <a href="contato/" class="acesso-button">Fale Conosco</a>
                 </div>
             </div>
         </section>
@@ -248,7 +339,7 @@
         <div class="container">
             <p><strong>Colégio Estadual Professora Maria Helena Teixeira Luciano</strong></p>
             <p>
-                <a href="https://maps.app.goo.gl/HNb8QmxQHbjTK96R8" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.google.com/maps/place/Col%C3%A9gio+Estadual+Professora+Maria+Helena+Teixeira+Luciano/@-25.753896,-48.473539,17z/data=!3m1!4b1!4m6!3m5!1s0x94dbee67406a45c7:0x222629b19e959639!8m2!3d-25.7539009!4d-48.4709641!16s%2Fg%2F1td0j2t7?entry=ttu" target="_blank" rel="noopener noreferrer">
                     R. Tamandaré, 405 - Balneário Shangri-lá, Pontal do Paraná - PR, 83255-000
                 </a>
             </p>
@@ -257,6 +348,26 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuHamburguer = document.querySelector('.menu-hamburguer');
+            const navMenu = document.querySelector('nav');
+            const fecharMenu = document.querySelector('.fechar-menu');
+
+            // Abre o menu
+            if (menuHamburguer) {
+                menuHamburguer.addEventListener('click', () => {
+                    navMenu.classList.add('ativo');
+                });
+            }
+
+            // Fecha o menu
+            if (fecharMenu) {
+                fecharMenu.addEventListener('click', () => {
+                    navMenu.classList.remove('ativo');
+                });
+            }
+        });
+
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 
