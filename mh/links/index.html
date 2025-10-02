@@ -243,6 +243,7 @@
             color: var(--cor-secundaria);
         }
         
+        /* --- Media Queries para Responsividade --- */
         @media (min-width: 600px) {
             .links-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -250,6 +251,7 @@
         }
 
         @media (min-width: 992px) {
+            /* CORREÇÃO APLICADA: Ambas as seções de links terão 4 colunas em desktop */
             .links-container {
                 grid-template-columns: repeat(4, 1fr);
             }
@@ -280,8 +282,21 @@
             .section-title {
                 font-size: 1.5rem;
             }
+            
+            .links-container:not(.links-container-buttons) {
+                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .links-container-buttons {
+                 grid-template-columns: 1fr;
+            }
+
             .link-card-content h3 {
-                font-size: 1rem;
+                font-size: 0.9rem; 
+                min-height: 3em; 
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .link-button {
                 font-size: 1rem;
