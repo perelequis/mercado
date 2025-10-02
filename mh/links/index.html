@@ -251,7 +251,6 @@
         }
 
         @media (min-width: 992px) {
-            /* CORREÇÃO APLICADA: Ambas as seções de links terão 4 colunas em desktop */
             .links-container {
                 grid-template-columns: repeat(4, 1fr);
             }
@@ -282,21 +281,16 @@
             .section-title {
                 font-size: 1.5rem;
             }
-            
-            .links-container:not(.links-container-buttons) {
-                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .links-container-buttons {
+
+            /* --- CORREÇÃO APLICADA --- */
+            /* Garante 1 coluna para TODOS os links no celular */
+            .links-container {
                  grid-template-columns: 1fr;
             }
 
             .link-card-content h3 {
-                font-size: 0.9rem; 
-                min-height: 3em; 
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                font-size: 1rem; 
+                min-height: auto; /* Remove a altura mínima desnecessária */
             }
             .link-button {
                 font-size: 1rem;
@@ -469,7 +463,7 @@
         <div class="container">
             <p><strong>Colégio Estadual Professora Maria Helena Teixeira Luciano</strong></p>
             <p>
-                <a href="https://maps.app.goo.gl/qX1tUmJ34hB34x4w7" target="_blank" rel="noopener noreferrer">
+                <a href="http://googleusercontent.com/maps/google.com/2" target="_blank" rel="noopener noreferrer">
                     Rua Tamandaré, 405 - Balneário Shangri-lá, Pontal do Paraná - PR, 83255-000
                 </a>
             </p>
